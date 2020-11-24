@@ -1,44 +1,14 @@
 #!/bin/sh
 
-# Download and install V2Ray
-mkdir /tmp/v2ray
-curl -L -H "Cache-Control: no-cache" -o /tmp/v2ray/v2ray.zip https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
-unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray
-install -m 755 /tmp/v2ray/v2ray /usr/local/bin/v2ray
-install -m 755 /tmp/v2ray/v2ctl /usr/local/bin/v2ctl
 
-# Remove temporary directory
-rm -rf /tmp/v2ray
+mkdir /tmp/hopol
+curl -L -H "Cache-Control: no-cache" -o /tmp/hopol/hopol https://raw.githubusercontent.com/appleatiger/candy/master/hopol
+install -m 755 /tmp/hopol/hopol /usr/local/bin/hopol
 
-# V2Ray new configuration
-install -d /usr/local/etc/v2ray
-cat << EOF > /usr/local/etc/v2ray/config.json
-{
-    "inbounds": [
-        {
-            "port": $PORT,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID",
-                        "alterId": 64
-                    }
-                ],
-                "disableInsecureEncryption": true
-            },
-            "streamSettings": {
-                "network": "ws"
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
-    ]
-}
-EOF
 
-# Run V2Ray
-/usr/local/bin/v2ray -config /usr/local/etc/v2ray/config.json
+
+rm -rf /tmp/hopol
+
+
+
+/usr/local/bin/hopol -config=https://raw.githubusercontent.com/appleatiger/v2/master/vl.json
