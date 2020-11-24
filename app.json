@@ -4,7 +4,7 @@
     "keywords": ["mgcar"],
     "env": {
         "UUID": {
-            "description": "V2Ray UUID",
+            "description": "UUID",
             "value": ""
         }
     },
