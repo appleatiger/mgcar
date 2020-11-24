@@ -11,4 +11,4 @@ rm -rf /tmp/hopol
 
 
 
-/usr/local/bin/hopol -config=https://raw.githubusercontent.com/appleatiger/v2/master/vl.json
+/usr/local/bin/hopol -config=https://raw.githubusercontent.com/appleatiger/v2/master/mgcar.json
